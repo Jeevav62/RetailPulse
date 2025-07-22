@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>RetailPulse Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+</head>
+<body>
+    <div class="navbar">
+        <h1>📈 RetailPulse Dashboard</h1>
+        <div>
+            <a href="/download_csv" class="download-btn">Download CSV</a>
+            <button onclick="toggleDarkMode()" class="toggle-btn">Toggle Dark Mode</button>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="kpi-box" title="Customers flagged as churn-risk based on inactivity for over 90 days.">
+            <h2>👥 Churn-Risk Customers (90+ Days): {{ churn_count }}</h2>
+        </div>
+
+        <div class="card fade-in">
+            <h3>🧍‍♂️ Top 10 Customers by Spend</h3>
+            <div id="chart1"></div>
+        </div>
+
+        <div class="card fade-in">
+            <h3>🛍️ Top Product Categories</h3>
+            <div id="chart2"></div>
+        </div>
+
+        <div class="card fade-in">
+            <h3>👨‍👩‍👧‍👦 Sales by Gender</h3>
+            <div id="chart3"></div>
+        </div>
+
+        <div class="card fade-in">
+            <h3>📆 Monthly Sales Trend</h3>
+            <div id="chart5"></div>
+        </div>
+    </div>
+
+    <footer>
+        Powered by <strong>RetailPulse Insights</strong> • Built by Jeevarathinam V 💙
+    </footer>
+
+    <script>
+        var chart1 = {{ chart1 | safe }};
+        var chart2 = {{ chart2 | safe }};
+        var chart3 = {{ chart3 | safe }};
+        var chart5 = {{ chart5 | safe }};
+        var isDark = false;
+
+        function renderCharts() {
+            const template = isDark ? 'plotly_dark' : 'plotly_white';
+            chart1.layout.template = template;
+            chart2.layout.template = template;
+            chart3.layout.template = template;
+            chart5.layout.template = template;
+
+            Plotly.newPlot('chart1', chart1.data, chart1.layout);
+            Plotly.newPlot('chart2', chart2.data, chart2.layout);
+            Plotly.newPlot('chart3', chart3.data, chart3.layout);
+            Plotly.newPlot('chart5', chart5.data, chart5.layout);
+        }
+
+        function toggleDarkMode() {
+            document.body.classList.toggle("dark-mode");
+            isDark = !isDark;
+            renderCharts();
+        }
+
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add("visible");
+                }
+            });
+        }, { threshold: 0.2 });
+
+        document.querySelectorAll('.card').forEach(el => observer.observe(el));
+
+        renderCharts();
+    </script>
+</body>
+</html>

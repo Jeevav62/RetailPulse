@@ -1,0 +1,107 @@
+:root {
+    --primary-color: #00B894;
+    --card-bg-light: #ffffff;
+    --card-bg-dark: #1E1E1E;
+    --text-dark: #121212;
+    --text-light: #ffffff;
+}
+
+body {
+    font-family: 'Segoe UI', sans-serif;
+    background-color: #f4f4f9;
+    color: var(--text-dark);
+    margin: 0;
+    padding: 0;
+    transition: background-color 0.4s ease, color 0.4s ease;
+}
+
+.dark-mode {
+    background-color: #121212;
+    color: var(--text-light);
+}
+
+.container {
+    max-width: 900px;
+    margin: auto;
+    padding: 20px;
+}
+
+.navbar {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 15px 25px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navbar h1 {
+    margin: 0;
+    font-size: 1.8em;
+}
+
+.download-btn,
+.toggle-btn {
+    padding: 10px 18px;
+    margin-left: 10px;
+    background: white;
+    color: var(--primary-color);
+    border: 2px solid white;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.download-btn:hover,
+.toggle-btn:hover {
+    background: var(--primary-color);
+    color: white;
+}
+
+.kpi-box {
+    background: var(--card-bg-light);
+    padding: 20px;
+    margin: 30px 0;
+    border-left: 5px solid #ff6b6b;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.07);
+}
+
+.dark-mode .kpi-box {
+    background: var(--card-bg-dark);
+}
+
+.card {
+    background: var(--card-bg-light);
+    padding: 20px;
+    margin-bottom: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.07);
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.card h3 {
+    margin-top: 0;
+}
+
+.card.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.dark-mode .card {
+    background: var(--card-bg-dark);
+}
+
+footer {
+    text-align: center;
+    padding: 15px;
+    font-size: 0.9em;
+    background-color: #eaeaea;
+}
+
+.dark-mode footer {
+    background-color: #1a1a1a;
+}

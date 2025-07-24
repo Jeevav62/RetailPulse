@@ -104,10 +104,10 @@ Visit `http://localhost:5000` in your browser.
 ## 📸 Screenshots
 
 ### 💡 Light Mode  
-![Light Mode Dashboard](screenshots/dashboard_light.png)
+![Light Mode Dashboard](C:\Users\jeevarathinam\RetailPulse\RetailPulse\Screenshots\dashboard_light.png.jpeg)
 
 ### 🌙 Dark Mode  
-![Dark Mode Dashboard](screenshots/dashboard_dark.png)
+![Dark Mode Dashboard](C:\Users\jeevarathinam\RetailPulse\RetailPulse\Screenshots\dashboard_dark.png.jpeg)
 
 
 ---
